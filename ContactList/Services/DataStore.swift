@@ -7,7 +7,7 @@
 
 import Foundation
 
-class DataManager {
+class DataStore {
     
     let firstNames = [
         "Pavel",

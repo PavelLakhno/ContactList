@@ -20,7 +20,7 @@ struct Person {
     
     static func getPersonList() -> [Person] {
         
-        let dataManager = DataManager()
+        let dataManager = DataStore()
         var persons: [Person] = []
         
         let firstNames = dataManager.firstNames.shuffled()
@@ -28,7 +28,14 @@ struct Person {
         let emails = dataManager.emails.shuffled()
         let phoneNumbers = dataManager.phoneNumbers.shuffled()
         
-        for index in 0..<firstNames.count {
+        let minValue = min(
+            firstNames.count,
+            lastNames.count,
+            emails.count,
+            phoneNumbers.count
+        )
+        
+        for index in 0..<minValue {
             let person = Person(
                 firstName: firstNames[index],
                 lastName: lastNames[index],
